@@ -1,0 +1,73 @@
+# Visual Studio Code in a container
+# Based on jessfraz/vscode
+#
+# docker run -d \
+#    -v /tmp/.X11-unix:/tmp/.X11-unix \
+#    -v $HOME:/home/user \
+#    -e DISPLAY=unix$DISPLAY \
+#    --device /dev/dri \
+#    --name vscode \
+#    markgaze/vscode
+
+FROM debian:buster
+LABEL maintainer "Mark Gaze <mark.l.gaze@gmail.com>"
+
+# Tell debconf to run in non-interactive mode
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && apt-get install -y \
+  apt-transport-https \
+  ca-certificates \
+  curl \
+  gnupg \
+  --no-install-recommends
+
+# Add the vscode debian repo
+RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add -
+RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
+
+RUN apt-get update && apt-get -y install \
+  code \
+  git \
+  libasound2 \
+  libatk1.0-0 \
+  libcairo2 \
+  libcups2 \
+  libexpat1 \
+  libfontconfig1 \
+  libfreetype6 \
+  libgtk2.0-0 \
+  libpango-1.0-0 \
+  libx11-xcb1 \
+  libxcomposite1 \
+  libxcursor1 \
+  libxdamage1 \
+  libxext6 \
+  libxfixes3 \
+  libxi6 \
+  libxrandr2 \
+  libxrender1 \
+  libxss1 \
+  libxtst6 \
+  openssh-client \
+  wget \
+  --no-install-recommends \
+  && rm -rf /var/lib/apt/lists/*
+
+# install flat plat theme
+RUN wget 'https://github.com/nana-4/Flat-Plat/releases/download/3.20.20160404/Flat-Plat-3.20.20160404.tar.gz'
+RUN tar -xf Flat-Plat*
+RUN mv Flat-Plat /usr/share/themes
+RUN rm Flat-Plat*gz
+RUN mv /usr/share/themes/Default /usr/share/themes/Default.bak
+RUN ln -s /usr/share/themes/Flat-Plat /usr/share/themes/Default
+
+ENV HOME /home/user
+RUN useradd --create-home --home-dir $HOME user \
+  && chown -R user:user $HOME
+
+COPY start.sh /usr/local/bin/start.sh
+
+WORKDIR $HOME
+
+CMD [ "start.sh" ]
