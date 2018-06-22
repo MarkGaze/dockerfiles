@@ -54,14 +54,6 @@ RUN apt-get update && apt-get -y install \
   --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
-# install flat plat theme
-RUN wget 'https://github.com/nana-4/Flat-Plat/releases/download/3.20.20160404/Flat-Plat-3.20.20160404.tar.gz'
-RUN tar -xf Flat-Plat*
-RUN mv Flat-Plat /usr/share/themes
-RUN rm Flat-Plat*gz
-RUN mv /usr/share/themes/Default /usr/share/themes/Default.bak
-RUN ln -s /usr/share/themes/Flat-Plat /usr/share/themes/Default
-
 ENV HOME /home/user
 RUN useradd --create-home --home-dir $HOME user \
   && chown -R user:user $HOME
