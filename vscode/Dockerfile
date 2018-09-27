@@ -1,14 +1,3 @@
-# Visual Studio Code in a container
-#	Based on jessfraz/vscode
-#
-# docker run -d \
-#    -v /tmp/.X11-unix:/tmp/.X11-unix \
-#    -v $HOME:/home/user \
-#    -e DISPLAY=unix$DISPLAY \
-#    --device /dev/dri \
-#    --name vscode \
-#    markgaze/vscode
-
 FROM debian:buster
 LABEL maintainer "Mark Gaze <mark.l.gaze@gmail.com>"
 
@@ -29,6 +18,7 @@ RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable ma
 RUN apt-get update && apt-get -y install \
 	code \
 	git \
+	make \
 	libasound2 \
 	libatk1.0-0 \
 	libcairo2 \
@@ -50,8 +40,7 @@ RUN apt-get update && apt-get -y install \
 	libxss1 \
 	libxtst6 \
 	openssh-client \
-	--no-install-recommends \
-	&& rm -rf /var/lib/apt/lists/*
+	--no-install-recommends
 
 ENV HOME /home/user
 RUN useradd --create-home --home-dir $HOME user \
