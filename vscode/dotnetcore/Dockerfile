@@ -22,7 +22,8 @@ RUN curl -SL --output dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotn
   && mkdir -p /usr/share/dotnet \
   && tar -zxf dotnet.tar.gz -C /usr/share/dotnet \
   && rm dotnet.tar.gz \
-  && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+  && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet \
+  && code --install-extension ms-vscode.csharp --user-data-dir /home/user
 
 # Configure Kestrel web server to bind to port 80 when present
 ENV ASPNETCORE_URLS=http://+:80 \
@@ -32,7 +33,5 @@ ENV ASPNETCORE_URLS=http://+:80 \
   DOTNET_USE_POLLING_FILE_WATCHER=true \
   # Skip extraction of XML docs - generally not useful within an image/container - helps performance
   NUGET_XMLDOC_MODE=skip
-
-RUN code --install-extension ms-vscode.csharp --user-data-dir /home/user
 
 RUN chown -R user:user $HOME

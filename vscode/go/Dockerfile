@@ -1,8 +1,7 @@
 FROM markgaze/vscode
 
-RUN apt-get update && apt-get -y install golang
-
-RUN code --install-extension ms-vscode.go --user-data-dir /home/user
+RUN apt-get update && apt-get -y install golang && \
+  code --install-extension ms-vscode.go --user-data-dir /home/user
 
 RUN go get github.com/mdempsky/gocode && \
   go get github.com/uudashr/gopkgs/cmd/gopkgs && \
