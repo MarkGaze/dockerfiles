@@ -19,6 +19,7 @@ RUN apt-get update && apt-get -y install \
 	code \
 	git \
 	make \
+	wget \
 	libasound2 \
 	libatk1.0-0 \
 	libcairo2 \
@@ -43,9 +44,18 @@ RUN apt-get update && apt-get -y install \
 	--no-install-recommends
 
 ENV HOME /home/user
-RUN useradd --create-home --home-dir $HOME user \
-	&& chown -R user:user $HOME
+RUN useradd --create-home --home-dir $HOME user
+RUN mkdir -p ~/.local/share/fonts && \
+	for type in Bold Light Medium Regular Retina; do wget -O ~/.local/share/fonts/FiraCode-$type.ttf "https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-$type.ttf?raw=true"; done && \
+	fc-cache -f
 
+RUN code --install-extension pkief.material-icon-theme --user-data-dir /home/user && \
+	code --install-extension streetsidesoftware.code-spell-checker --user-data-dir /home/user && \
+	code --install-extension eamodio.gitlens --user-data-dir /home/user && \
+	code --install-extension esbenp.prettier-vscode --user-data-dir /home/user
+
+COPY ./config/settings.json $HOME/.config/Code/User/settings.json
+RUN chown -R user:user $HOME
 COPY start.sh /usr/local/bin/start.sh
 
 WORKDIR $HOME

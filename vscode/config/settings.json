@@ -1,0 +1,27 @@
+{
+  "window.restoreFullscreen": true,
+  "editor.minimap.enabled": true,
+  "extensions.autoUpdate": true,
+  "editor.tabSize": 2,
+  "workbench.iconTheme": "material-icon-theme",
+  "vsicons.dontShowNewVersionMessage": true,
+  "terminal.integrated.shell.linux": "bash",
+  "terminal.integrated.shellArgs.linux": ["--login"],
+  "files.eol": "\n",
+  "breadcrumbs.enabled": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.env.linux": {
+    "terminal.integrated.fontFamily": "monospace"
+  },
+  "editor.fontFamily": "Fira Code Retina",
+  "editor.fontSize": 13,
+  "editor.fontLigatures": true,
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 180,
+  "editor.formatOnSave": true,
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "gitlens.historyExplorer.enabled": true
+}
