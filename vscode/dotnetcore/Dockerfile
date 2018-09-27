@@ -32,6 +32,7 @@ ENV ASPNETCORE_URLS=http://+:80 \
   # Enable correct mode for dotnet watch (only mode supported in a container)
   DOTNET_USE_POLLING_FILE_WATCHER=true \
   # Skip extraction of XML docs - generally not useful within an image/container - helps performance
-  NUGET_XMLDOC_MODE=skip
+  NUGET_XMLDOC_MODE=skip \
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
 RUN chown -R user:user $HOME
