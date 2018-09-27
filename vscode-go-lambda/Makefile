@@ -21,3 +21,7 @@ remove:
 .PHONY: force-remove
 force-remove: 
 	sudo docker rm -f $(CONTAINER)
+	
+.PHONY: push
+push:
+	sudo docker push $(IMAGE):$(TAG)
