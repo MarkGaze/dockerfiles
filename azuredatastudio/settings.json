@@ -1,0 +1,11 @@
+{
+  "workbench.colorTheme": "Default Dark Azure Data Studio",
+  "editor.fontFamily": "Fira Code Retina",
+  "editor.fontSize": 13,
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "terminal.integrated.shell.linux": "bash",
+  "terminal.integrated.shellArgs.linux": ["--login"],
+  "editor.minimap.enabled": true
+}
