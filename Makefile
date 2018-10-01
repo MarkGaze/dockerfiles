@@ -6,6 +6,7 @@ build:
 	cd vscode/go-lambda && make build
 	cd vscode/nodejs && make build
 	cd vscode/react && make build
+	cd vscode/angular && make build
 
 .PHONY: push
 push:
@@ -15,3 +16,4 @@ push:
 	cd vscode/go-lambda && make push
 	cd vscode/nodejs && make push
 	cd vscode/react && make push
+	cd vscode/angular && make push
