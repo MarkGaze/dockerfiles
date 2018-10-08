@@ -1,4 +1,5 @@
 {
+  "window.newWindowDimensions": "maximized",
   "workbench.colorTheme": "Default Dark Azure Data Studio",
   "editor.fontFamily": "Fira Code Retina",
   "editor.fontSize": 13,
