@@ -7,6 +7,10 @@ build:
 	cd vscode/nodejs && make build
 	cd vscode/react && make build
 	cd vscode/angular && make build
+	cd azuredatastudio && make build
+	cd franz && make build
+	cd sqlectron && make build
+	cd sqlserver && make build
 
 .PHONY: push
 push:
@@ -17,3 +21,7 @@ push:
 	cd vscode/nodejs && make push
 	cd vscode/react && make push
 	cd vscode/angular && make push
+	cd azuredatastudio && make push
+	cd franz && make push
+	cd sqlectron && make push
+	cd sqlserver && make push
