@@ -13,6 +13,9 @@ RUN go get github.com/mdempsky/gocode && \
   go get github.com/rogpeppe/godef && \
   go get golang.org/x/tools/cmd/godoc && \
   go get github.com/sqs/goreturns && \
-  go get github.com/golang/lint/golint
+  go get github.com/golang/lint/golint && \
+  curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 
 RUN chown -R user:user $HOME
+
+RUN echo export PATH=$PATH:/home/user/go/bin >> /home/user/.bashrc
