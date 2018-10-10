@@ -1,5 +1,6 @@
 resources:
   - repo: self
+trigger: none
 queue:
   name: Hosted Linux Preview
 steps:
@@ -8,7 +9,7 @@ steps:
     inputs:
       containerregistrytype: 'Container Registry'
       dockerRegistryConnection: 'Docker Hub'
-      dockerFile: vscode/Dockerfile
+      dockerFile: vscode/react/Dockerfile
       imageName: 'markgaze/vscode:react'
       qualifyImageName: false
 
