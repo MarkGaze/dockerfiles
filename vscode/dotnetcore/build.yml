@@ -1,0 +1,21 @@
+resources:
+  - repo: self
+queue:
+  name: Hosted Linux Preview
+steps:
+  - task: Docker@0
+    displayName: 'Build image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'Docker Hub'
+      dockerFile: vscode/Dockerfile
+      imageName: 'markgaze/vscode:dotnetcore'
+      qualifyImageName: false
+
+  - task: Docker@0
+    displayName: 'Push image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'Docker Hub'
+      action: 'Push an image'
+      imageName: 'markgaze/vscode:dotnetcore'
