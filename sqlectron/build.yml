@@ -1,0 +1,22 @@
+resources:
+  - repo: self
+trigger: none
+queue:
+  name: Hosted Linux Preview
+steps:
+  - task: Docker@0
+    displayName: 'Build image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'Docker Hub'
+      dockerFile: sqlectron/Dockerfile
+      imageName: 'markgaze/sqlectron:latest'
+      qualifyImageName: false
+
+  - task: Docker@0
+    displayName: 'Push image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'Docker Hub'
+      action: 'Push an image'
+      imageName: 'markgaze/sqlectron:latest'
