@@ -19,4 +19,4 @@ steps:
       containerregistrytype: 'Container Registry'
       dockerRegistryConnection: 'Docker Hub'
       action: 'Push an image'
-      imageName: 'markgaze/sqlserver:201'
+      imageName: 'markgaze/sqlserver:2017'
