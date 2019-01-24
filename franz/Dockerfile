@@ -37,8 +37,8 @@ RUN apt-get update && apt-get install -y libnotify4 \
 
 RUN apt-get update && apt-get install -y wget alsa-utils pulseaudio
 
-RUN wget https://github.com/meetfranz/franz/releases/download/v5.0.0-beta.18/franz_5.0.0-beta.18_amd64.deb && \
-  apt install ./franz_5.0.0-beta.18_amd64.deb -y
+RUN wget https://github.com/meetfranz/franz/releases/download/v5.0.0-beta.22/franz_5.0.0-beta.22_amd64.deb && \
+  apt install ./franz_5.0.0-beta.22_amd64.deb -y
 
 RUN sed -i "s/; enable-shm = yes/enable-shm = no/g" /etc/pulse/daemon.conf && \
   sed -i "s/; enable-shm = yes/enable-shm = no/g" /etc/pulse/client.conf

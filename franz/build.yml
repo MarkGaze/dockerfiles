@@ -2,7 +2,7 @@ resources:
   - repo: self
 trigger: none
 queue:
-  name: Hosted Linux Preview
+  name: Hosted Ubuntu 1604
 steps:
   - task: Docker@0
     displayName: 'Build image'
