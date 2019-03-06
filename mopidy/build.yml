@@ -1,0 +1,22 @@
+resources:
+  - repo: self
+trigger: none
+queue:
+  name: Hosted Ubuntu 1604
+steps:
+  - task: Docker@0
+    displayName: 'Build image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'Docker Hub'
+      dockerFile: mopidy/Dockerfile
+      imageName: 'markgaze/mopidy:latest'
+      qualifyImageName: false
+
+  - task: Docker@0
+    displayName: 'Push image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'Docker Hub'
+      action: 'Push an image'
+      imageName: 'markgaze/mopidy:latest'
